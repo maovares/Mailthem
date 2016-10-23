@@ -12,11 +12,13 @@ var bodyParser = require('body-parser');
 var port = 6060;
 
 app.use(express.static(__dirname + '/../webApp'));
-app.use('/styles', express.static(__dirname + '/node_modules/bootstrap/dist/css/'));
-app.use('/scripts',  express.static(__dirname + '/node_modules/bootstrap/dist/js/'));
+app.use('/styles', express.static(__dirname + '/node_modules/angular-material/'));
 app.use('/scripts',  express.static(__dirname + '/node_modules/angular/'));
-app.use('/scripts',  express.static(__dirname + '/node_modules/angular-ui-bootstrap/dist/'));
+app.use('/scripts',  express.static(__dirname + '/node_modules/angular-aria/'));
+app.use('/scripts',  express.static(__dirname + '/node_modules/angular-animate/'));
+app.use('/scripts',  express.static(__dirname + '/node_modules/angular-material/'));
 app.use('/scripts',  express.static(__dirname + '/node_modules/angular-ui-router/release/'));
+app.use('/scripts',  express.static(__dirname + '/node_modules/angular-md5/'));
 
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());

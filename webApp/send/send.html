@@ -1,0 +1,21 @@
+<div>
+  <div class="">
+    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+      <thead>
+        <tr>
+          New email
+        </tr>
+  </thead>
+  <tbody>
+    <tr grid-item>
+      <td class="mdl-data-table__cell--non-numeric">
+        <span ng-bind="item.code"></span>
+      </td>
+      <td ng-bind="item.statusDisplay"></td>
+      <td ng-bind="item.placed | date:'MM/dd/yyyy'"></td>
+      <td ng-bind="item.total.formattedValue"></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>

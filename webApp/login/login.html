@@ -1,3 +1,28 @@
 <div>
-  login
+  <div class="" layout="column" layout-align="center center" layout-fill="layout-fill">
+    <div layout="column" class="loginBox md-whiteframe-z1">
+      <form id="loginForm" name="loginForm" novalidate>
+        <md-toolbar>
+          <h2 class="md-toolbar-tools"><span>Login</span></h2>
+        </md-toolbar>
+        <md-content layout="column" class="md-padding">
+          <md-input-container>
+            <label>EmailAddress</label>
+            <input id="email" name="email" type="email" ng-model="loginCtrl.email" required/>
+            <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="error">This field is required.</p>
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input id="password" name="password" type="password" ng-model="loginCtrl.password" required/>
+            <p ng-show="loginCtrl.error" class="error">Incorrect username or password.</p>
+          </md-input-container>
+          <div layout="row" layout-align="center center" style="padding-top:20px;">
+            <md-button href="" md-no-ink="md-no-ink" ng-click="loginCtrl.toSignup()">Signup</md-button>
+            <div flex="flex"></div>
+            <md-button type="button" class="md-raised md-primary" ng-disabled="loginForm.$invalid" ng-click="loginCtrl.login()">Login</md-button>
+          </div>
+        </md-content>
+      </form>
+    </div>
+  </div>
 </div>

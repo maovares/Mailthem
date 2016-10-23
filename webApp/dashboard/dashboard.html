@@ -1,3 +1,42 @@
 <div>
-  Dashboard
+  <section layout="row" flex>
+    <md-sidenav  class="md-sidenav-left" md-component-id="left"
+    md-is-locked-open="$mdMedia('gt-md')"
+    md-whiteframe="4">
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">Actions</h1>
+    </md-toolbar>
+    <md-content layout-padding>
+      <md-button ng-click="" class="md-primary" hide-gt-md>
+        Close Sidenav Left
+      </md-button>
+      <md-content><md-button type="button" class="md-raised md-primary" ng-click="dashboardCtrl.send()">New email</md-button></md-content>
+      <md-content><md-button type="button" class="md-raised md-primary" ng-click="dashboardCtrl.newEmail()">New template</md-button></md-content>
+      <md-content><md-button type="button" class="md-raised md-warn" ng-click="dashboardCtrl.logout()">Logout, {{dashboardCtrl.username}}</md-button></md-content>
+    </md-content>
+  </md-sidenav>
+
+
+  <md-content flex layout-padding>
+    <md-toolbar md-scroll-shrink>
+      <div class="md-toolbar-tools">{{dashboardCtrl.email}} templates</div>
+    </md-toolbar>
+    <section>
+      <md-list layout-padding>
+        <md-list-item class="md-3-line" ng-repeat="message in dashboardCtrl.messages" ng-click="alert('TEST')">
+          <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+          <div class="md-list-item-text">
+            <h3>{{message.what}}</h3>
+            <h4>{{message.who}}</h4>
+            <p>
+              {{message.notes}}
+            </p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </section>
+  </md-content>
+
+</section>
+</div>
 </div>

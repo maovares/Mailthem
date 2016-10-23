@@ -1,3 +1,37 @@
 <div>
-  Signup
+  <div class="" layout="column" layout-align="center center" layout-fill="layout-fill">
+    <div layout="column" class="loginBox md-whiteframe-z1">
+      <form id="signupForm" name="signupForm" novalidate>
+        <md-toolbar>
+          <h2 class="md-toolbar-tools"><span>Signup</span></h2>
+        </md-toolbar>
+        <md-content layout="column" class="md-padding">
+          <md-input-container>
+            <label>UserName</label>
+            <input id="username" name="username" type="text" ng-model="signupCtrl.username" required/>
+            <p ng-show="signupForm.username.$invalid && !signupForm.username.$pristine" class="help-block">This field is required.</p>
+          </md-input-container>
+          <md-input-container>
+            <label>EmailAddress</label>
+            <input id="email" name="email" type="email" ng-model="signupCtrl.email" required/>
+            <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="help-block">This field is required.</p>
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input id="password" name="password" type="password" ng-model="signupCtrl.password"  pattern=".{8,}" required/>
+            <p ng-show="signupForm.password.$invalid && !signupForm.password.$pristine" class="help-block">This field is required / 8 chars minimum.</p>
+          </md-input-container>
+          <md-input-container>
+            <label>Confirm Password</label>
+            <input id="repassword" name="repassword" type="password" ng-model="signupCtrl.repassword" required/>
+            <p ng-show="signupForm.repassword.$invalid && !signupForm.repassword.$pristine" class="help-block">This field is required.</p>
+            <p ng-show="signupCtrl.password!=signupCtrl.repassword && !signupForm.repassword.$pristine" class="help-block">Password does not match the confirm password.</p>
+          </md-input-container>
+          <div layout="row" layout-align="center center" style="padding-top:20px;">
+            <md-button type="button" class="md-raised md-primary" ng-disabled="signupForm.$invalid || signupCtrl.password!=signupCtrl.repassword" ng-click="signupCtrl.signup()">Signup</md-button>
+          </div>
+        </md-content>
+      </form>
+    </div>
+  </div>
 </div>
