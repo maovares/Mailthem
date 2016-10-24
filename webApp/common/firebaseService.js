@@ -1,7 +1,7 @@
 /*
-  Mailthem 2016
-  Marcos Rodríguez Ovares
-  Firebase Service
+Mailthem 2016
+Marcos Rodríguez Ovares
+Firebase Service
 */
 'use strict';
 
@@ -26,29 +26,38 @@ angular.module('mailthemApp')
   };
 
 
-    th.signup = function(username, email, password, callback){
-      try {
-        var data={'username' : username, 'email':email, 'password': password,
-        'templates':[{'name':'defaultTemplate', 'text':'you can create your personal templates like this'}]};
-        var updates = {};
-        updates['/person/' + username] = data;
-        firebase.database().ref().update(updates);
-        callback(false,'signup ok');
-      }
-      catch(err) {
-          callback(true, 'signup bad');
-      }
-    };
+  th.signup = function(username, email, password, callback){
+    try {
+      var data={'username' : username, 'email':email, 'password': password,
+      'templates':[{'name':'defaultTemplate', 'text':'you can create your personal templates like this'}]};
+      var updates = {};
+      updates['/person/' + username] = data;
+      firebase.database().ref().update(updates);
+      callback(false,'signup ok');
+    }
+    catch(err) {
+      callback(true, 'signup bad');
+    }
+  };
 
-    th.updateTemplates = function(templatesArray, username, callback){
-      try{
-        var updates = {};
-        updates['/person/' + username + '/templates'] = templatesArray;
-        firebase.database().ref().update(updates);
-        callback(false,'templates update ok');
-      }catch(err){
-        console.log(err);
-        callback(true, 'error updating templates');
-      }
+  th.updateTemplates = function(templatesArray, username, callback){
+    try{
+      var updates = {};
+      updates['/person/' + username + '/templates'] = templatesArray;
+      firebase.database().ref().update(updates);
+      callback(false,'templates update ok');
+    }catch(err){
+      console.log(err);
+      callback(true, 'error updating templates');
+    }
+  };
+
+  th.transformFireBaseArray = function(array){
+    var newArray = [];
+    for (var i = 0; i < array.length; i++) {
+      newArray.push({'name':array[i].name, 'text':array[i].text});
     };
+    return newArray;
+  };
+
 });

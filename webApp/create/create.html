@@ -1,27 +1,27 @@
 <div class="">
   <div class="" layout="column" layout-align="center center" layout-fill="layout-fill">
-  <div layout="column" class="loginBox md-whiteframe-z1">
-    <form id="createForm" name="createForm" novalidate>
-      <md-toolbar>
-        <h2 class="md-toolbar-tools"><span>Create template</span></h2>
-      </md-toolbar>
-      <md-content layout="column" class="md-padding">
-        <md-input-container>
-          <label>TemplateName</label>
-          <input id="templateName" name="templateName" type="text" ng-model="createCtrl.templateName" required/>
-        </md-input-container>
-        <md-input-container>
-          <label>Text</label>
-          <textarea id="textTemplate" name="textTemplate" ng-model="createCtrl.textTemplate" md-maxlength="500" rows="3" md-select-on-focus required></textarea>
-          <p ng-show="createForm.textTemplate.$invalid && !createForm.textTemplate.$pristine" class="help-block">This field is required</p>
-        </md-input-container>
-        <!-- FILE -->
-        <div layout="row" layout-align="center center" style="padding-top:20px;">
-          <md-button type="submit" class="md-raised md-primary" ng-disabled="createForm.$invalid" ng-click="createCtrl.createTemplate()">Create</md-button>
-        </div>
-      </md-content>
-    </form>
+    <div layout="column" class="loginBox md-whiteframe-z1">
+      <form id="createForm" name="createForm" novalidate>
+        <md-toolbar>
+          <h2 class="md-toolbar-tools"><span>Create template</span></h2>
+        </md-toolbar>
+        <md-content layout="column" class="md-padding">
+          <md-input-container>
+            <label>TemplateName</label>
+            <input id="templateName" name="templateName" type="text" ng-model="createCtrl.templateName" required/>
+          </md-input-container>
+          <md-input-container>
+            <label>Text</label>
+            <textarea id="textTemplate" name="textTemplate" ng-model="createCtrl.textTemplate" md-maxlength="500" rows="3" md-select-on-focus required></textarea>
+            <p ng-show="createForm.textTemplate.$invalid && !createForm.textTemplate.$pristine" class="help-block">This field is required</p>
+          </md-input-container>
+          <!-- FILE -->
+          <div layout="row" layout-align="center center" style="padding-top:20px;">
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="createForm.$invalid" ng-click="createCtrl.createTemplate()">Create</md-button>
+          </div>
+        </md-content>
+      </form>
+    </div>
   </div>
-</div>
 </div>
 </div>

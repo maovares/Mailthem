@@ -1,7 +1,7 @@
 /*
-  Mailthem 2016
-  Marcos Rodríguez Ovares
-  Firebase Service
+Mailthem 2016
+Marcos Rodríguez Ovares
+User Service
 */
 'use strict';
 

@@ -1,51 +1,51 @@
 <div>
   <div class="" layout="column" layout-align="center center" layout-fill="layout-fill">
-  <div layout="column" class="loginBox md-whiteframe-z1">
-    <form id="emailForm" name="emailForm" novalidate>
-      <md-toolbar>
-        <h2 class="md-toolbar-tools"><span>New email</span></h2>
-      </md-toolbar>
-      <md-content layout="column" class="md-padding">
-        <md-input-container>
-          <label>To</label>
-          <input id="to" name="to" type="email" ng-model="sendCtrl.to"/>
-          <md-button type="button" class="md-raised md-primary" ng-disabled="emailForm.to.$invalid || sendCtrl.to =='' " ng-click="sendCtrl.addTo()">+</md-button>
-        </md-input-container>
-        <!--
-        <md-input-container>
+    <div layout="column" class="loginBox md-whiteframe-z1">
+      <form id="emailForm" name="emailForm" novalidate>
+        <md-toolbar>
+          <h2 class="md-toolbar-tools"><span>New email</span></h2>
+        </md-toolbar>
+        <md-content layout="column" class="md-padding">
+          <md-input-container>
+            <label>To</label>
+            <input id="to" name="to" type="email" ng-model="sendCtrl.to"/>
+            <md-button type="button" class="md-raised md-primary" ng-disabled="emailForm.to.$invalid || sendCtrl.to =='' " ng-click="sendCtrl.addTo()">+</md-button>
+          </md-input-container>
+          <!--
+          <md-input-container>
           <input id="file" name="file" type="file" accept=".csv" class="md-raised md-warn" ng-model="sendCtrl.file" aria-label="CSV"/>
-          <!--ng-disabled="sendCtrl.file == '' "-->
+          ng-disabled="sendCtrl.file == '' "
         </md-input-container>
         <p>{{sendCtrl.file}}</p>
         <md-button type="button" class="md-raised md-primary" ng-click="sendCtrl.readCSV(sendCtrl.file)">ChargeCSV</md-button>
       -->
-        <md-list>
-          <md-list-item class="md-2-line" ng-repeat="email in sendCtrl.toList">
-            <div class="md-list-item-text">
-              <md-checkbox ng-model="sendCtrl.checkUser" ng-click="sendCtrl.remove($index)" aria-label="email">{{email}}</md-checkbox>
-            </div>
-          </md-list-item>
-        </md-list>
-        <md-input-container>
-          <label>From</label>
-          <input id="from" name="from" type="text" ng-model="sendCtrl.from" disabled/>
-        </md-input-container>
-        <md-input-container>
-          <label>Subject</label>
-          <input id="subject" name="subject" type="text" ng-model="sendCtrl.subject"/>
-        </md-input-container>
-        <md-input-container>
-          <label>Message</label>
-          <textarea id="message" name="message" ng-model="sendCtrl.message" md-maxlength="500" rows="3" md-select-on-focus required></textarea>
-          <p ng-show="emailForm.message.$invalid && !emailForm.message.$pristine" class="help-block">This field is required</p>
-        </md-input-container>
-        <!-- FILE -->
-        <div layout="row" layout-align="center center" style="padding-top:20px;">
-          <md-button type="submit" class="md-raised md-primary" ng-disabled="emailForm.$invalid || (sendCtrl.toList.length < 1)" ng-click="sendCtrl.send()">Send email</md-button>
-        </div>
-      </md-content>
-    </form>
-  </div>
+      <md-list>
+        <md-list-item class="md-2-line" ng-repeat="email in sendCtrl.toList">
+          <div class="md-list-item-text">
+            <md-checkbox ng-model="sendCtrl.checkUser" ng-click="sendCtrl.remove($index)" aria-label="email">{{email}}</md-checkbox>
+          </div>
+        </md-list-item>
+      </md-list>
+      <md-input-container>
+        <label>From</label>
+        <input id="from" name="from" type="text" ng-model="sendCtrl.from" disabled/>
+      </md-input-container>
+      <md-input-container>
+        <label>Subject</label>
+        <input id="subject" name="subject" type="text" ng-model="sendCtrl.subject"/>
+      </md-input-container>
+      <md-input-container>
+        <label>Message</label>
+        <textarea id="message" name="message" ng-model="sendCtrl.message" md-maxlength="500" rows="3" md-select-on-focus required></textarea>
+        <p ng-show="emailForm.message.$invalid && !emailForm.message.$pristine" class="help-block">This field is required</p>
+      </md-input-container>
+      <!-- FILE -->
+      <div layout="row" layout-align="center center" style="padding-top:20px;">
+        <md-button type="submit" class="md-raised md-primary" ng-disabled="emailForm.$invalid || (sendCtrl.toList.length < 1)" ng-click="sendCtrl.send()">Send email</md-button>
+      </div>
+    </md-content>
+  </form>
+</div>
 </div>
 </div>
 </div>

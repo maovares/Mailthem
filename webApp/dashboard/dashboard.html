@@ -12,6 +12,7 @@
       </md-button>
       <md-content><md-button type="button" class="md-raised md-primary" ng-click="dashboardCtrl.newEmail()">New email</md-button></md-content>
       <md-content><md-button type="button" class="md-raised md-primary" ng-click="dashboardCtrl.newTemplate()">New template</md-button></md-content>
+      <md-content><md-button type="button" class="md-raised md-warn" ng-click="dashboardCtrl.editTemplate()">{{dashboardCtrl.editString}}</md-button></md-content>
       <md-content><md-button type="button" class="md-raised md-warn" ng-click="dashboardCtrl.logout()">Logout, {{dashboardCtrl.username}}</md-button></md-content>
     </md-content>
   </md-sidenav>
@@ -27,9 +28,10 @@
           <img ng-src="{{dashboardCtrl.imagePath}}" class="md-avatar" alt="{{template.name}}">
           <div class="md-list-item-text">
             <h3>{{template.name}}</h3>
-            <p>
-              {{template.text}}
-            </p>
+            <md-input-container>
+              <textarea id="tempText" name="tempText" aria-label="tempText" ng-model="template.text" rows="1" md-select-on-focus ng-disabled="!dashboardCtrl.editing"></textarea>
+            </md-input-container>
+            <md-button type="button" class="md-raised md-warn" ng-click="dashboardCtrl.deleteTemplate($index)">delete</md-button>
           </div>
         </md-list-item>
       </md-list>

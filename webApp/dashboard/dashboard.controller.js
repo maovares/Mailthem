@@ -1,16 +1,19 @@
 /*
-  Mailthem 2016
-  Marcos Rodríguez Ovares
-  Dashboard Controller
+Mailthem 2016
+Marcos Rodríguez Ovares
+Dashboard Controller
 */
 'use strict';
 
 angular.module('mailthemApp')
-.controller('DashboardController',['$state','UserService',function($state, UserService){
+.controller('DashboardController',['$state','FireBaseService', 'UserService',
+function($state, fireService, UserService){
   var th = this;
   th.username = UserService.username;
   th.email = UserService.email;
   th.templates = UserService.templates;
+  th.editing = false;
+  th.editString = 'Edit';
 
   th.logout = function(){
     UserService.auth = false;
@@ -30,5 +33,38 @@ angular.module('mailthemApp')
     $state.go('send');
   };
 
-  th.imagePath = 'http://www.stickees.com/files/avatars/face-avatars/1571-male-face-b2-sticker.png';
+  th.editTemplate = function(){
+    if(th.editing){
+      var newArray = fireService.transformFireBaseArray(th.templates);
+      fireService.updateTemplates(newArray, th.username,function(err, message){
+        if(err){
+          alert('Templates update error!');
+        }else {
+          UserService.templates = newArray;
+          th.editing = false;
+          th.editString = 'Edit';
+          alert('Templates updated!');
+        }
+      });
+    }else {
+      th.editing = true;
+      th.editString = 'Save';
+    }
+  };
+
+  th.deleteTemplate = function(i){
+    var newArray = fireService.transformFireBaseArray(th.templates);
+    newArray.splice(i, 1);
+    fireService.updateTemplates(newArray, th.username,function(err, message){
+      if(err){
+        alert('Templates delete error!');
+      }else {
+        UserService.templates = newArray;
+        th.templates = UserService.templates;
+        alert('Template deleted!');
+      }
+    });
+  };
+
+  th.imagePath = 'https://cdn1.iconfinder.com/data/icons/office-web/128/office-46-128.png';
 }]);

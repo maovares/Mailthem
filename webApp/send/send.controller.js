@@ -1,7 +1,7 @@
 /*
-  Mailthem 2016
-  Marcos Rodríguez Ovares
-  Send Controller
+Mailthem 2016
+Marcos Rodríguez Ovares
+Send Controller
 */
 'use strict';
 
@@ -44,18 +44,18 @@ function($state, UserService, EmailService, csvService){
           alert("Email send successfully!");
           th.clean();
         }
-    });
-  };
+      });
+    };
 
-  th.remove = function(i){
-    th.toList.splice(i, 1);
-  };
+    th.remove = function(i){
+      th.toList.splice(i, 1);
+    };
 
-  th.clean = function(){
-    th.subject = '';
-    th.to = '';
-    th.toList = [];
-    th.message = '';
-  };
+    th.clean = function(){
+      th.subject = '';
+      th.to = '';
+      th.toList = [];
+      th.message = '';
+    };
 
-}]);
+  }]);
