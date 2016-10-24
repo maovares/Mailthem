@@ -15,13 +15,36 @@ angular.module('mailthemApp')
 
   th.signup = function(){
     var md5Password = md5.createHash(th.password);
-    fireService.signup(th.username, th.email, md5Password, function(err, message){
+    fireService.login(th.email, th.password, function(err, data){
       if(err){
-          alert("Signup error, try other user and email");
+        //
       }else {
-          $state.go('login');
-      }
-    });
+        var loginResult = loginProcess(data, th.email, th.password);
+            if(loginResult.result){
+                alert("This email already exist, please use another email!");
+            }else{
+              fireService.signup(th.username, th.email, md5Password,
+                function(err, message){
+                  if(err){
+                      alert("Signup error, try other user and email");
+                  }else {
+                      $state.go('login');
+                  }
+              });
+            }
+        }
+      });
+
+      var loginProcess = function(array, email, password){
+        for (var i = 0; i < array.length; i++) {
+          if(array[i].email === email){
+              return {'result':true, 'templates':array[i].templates};
+            }
+        };
+        return {'result':false, 'templates':null};
+      };
+
+
   };
 
 }]);

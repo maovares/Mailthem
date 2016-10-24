@@ -10,8 +10,8 @@
       <md-button ng-click="" class="md-primary" hide-gt-md>
         Close Sidenav Left
       </md-button>
-      <md-content><md-button type="button" class="md-raised md-primary" ng-click="dashboardCtrl.send()">New email</md-button></md-content>
-      <md-content><md-button type="button" class="md-raised md-primary" ng-click="dashboardCtrl.newEmail()">New template</md-button></md-content>
+      <md-content><md-button type="button" class="md-raised md-primary" ng-click="dashboardCtrl.newEmail()">New email</md-button></md-content>
+      <md-content><md-button type="button" class="md-raised md-primary" ng-click="dashboardCtrl.newTemplate()">New template</md-button></md-content>
       <md-content><md-button type="button" class="md-raised md-warn" ng-click="dashboardCtrl.logout()">Logout, {{dashboardCtrl.username}}</md-button></md-content>
     </md-content>
   </md-sidenav>
@@ -23,13 +23,12 @@
     </md-toolbar>
     <section>
       <md-list layout-padding>
-        <md-list-item class="md-3-line" ng-repeat="message in dashboardCtrl.messages" ng-click="alert('TEST')">
-          <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+        <md-list-item class="md-3-line" ng-repeat="template in dashboardCtrl.templates" ng-click="dashboardCtrl.useTemplate(template.text)">
+          <img ng-src="{{dashboardCtrl.imagePath}}" class="md-avatar" alt="{{template.name}}">
           <div class="md-list-item-text">
-            <h3>{{message.what}}</h3>
-            <h4>{{message.who}}</h4>
+            <h3>{{template.name}}</h3>
             <p>
-              {{message.notes}}
+              {{template.text}}
             </p>
           </div>
         </md-list-item>

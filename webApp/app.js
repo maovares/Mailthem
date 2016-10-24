@@ -59,7 +59,7 @@ var app = angular.module('mailthemApp',[
       $state.transitionTo("login");
       event.preventDefault();
     }
-    else if (toState.authenticate) {
+    else if (toState.url === '/login') {
       UserService.auth = false;
     }
   });

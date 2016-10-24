@@ -16,7 +16,7 @@ angular.module('mailthemApp')
       var syncObject = $firebaseArray(rootRef);
       syncObject.$loaded().then(function(data){
         angular.forEach(data, function (value) {
-          personList.push({username: value.username, email: value.email, password:value.password});
+          personList.push({username: value.username, email: value.email, password:value.password, templates: value.templates});
         });
         callback(false, personList);
       });
@@ -28,7 +28,8 @@ angular.module('mailthemApp')
 
     th.signup = function(username, email, password, callback){
       try {
-        var data={'username' : username, 'email':email, 'password': password};
+        var data={'username' : username, 'email':email, 'password': password,
+        'templates':[{'name':'defaultTemplate', 'text':'you can create your personal templates like this'}]};
         var updates = {};
         updates['/person/' + username] = data;
         firebase.database().ref().update(updates);
@@ -36,6 +37,18 @@ angular.module('mailthemApp')
       }
       catch(err) {
           callback(true, 'signup bad');
+      }
+    };
+
+    th.updateTemplates = function(templatesArray, username, callback){
+      try{
+        var updates = {};
+        updates['/person/' + username + '/templates'] = templatesArray;
+        firebase.database().ref().update(updates);
+        callback(false,'templates update ok');
+      }catch(err){
+        console.log(err);
+        callback(true, 'error updating templates');
       }
     };
 });

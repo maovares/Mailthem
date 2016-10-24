@@ -23,20 +23,31 @@ angular.module('mailthemApp')
       if(err){
         //
       }else {
-        angular.forEach(data, function(value){
-          if(value.email === th.email
-            && value.password === md5.createHash(th.password)){
-              UserService.email = th.email;
-              UserService.username = value.username;
-              UserService.auth = true;
-              $state.go('dashboard');
+        var loginResult = loginProcess(data, th.email, th.password);
+            if(loginResult.result){
+                UserService.email = th.email;
+                UserService.username = loginResult.username;
+                UserService.templates = loginResult.templates;
+                UserService.auth = true;
+                $state.go('dashboard');
+            }else{
+                th.toast("Invalid user or password");
+                alert("Invalid user or password");
             }
-          });
-          th.toast("Invalid user or password");
         }
       });
     };
 
+
+    var loginProcess = function(array, email, password){
+      for (var i = 0; i < array.length; i++) {
+        if(array[i].email === email
+          && array[i].password === md5.createHash(password)){
+            return {'result':true, 'username':array[i].username,'templates':array[i].templates};
+          }
+      };
+      return {'result':false, 'username':null, 'templates':null};
+    };
 
     th.toast = function(text) {
       /*

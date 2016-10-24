@@ -11,4 +11,5 @@ angular.module('mailthemApp')
   th.username = '';
   th.email = '';
   th.auth = false;
+  th.templates = [];
 });

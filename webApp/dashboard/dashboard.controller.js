@@ -10,99 +10,25 @@ angular.module('mailthemApp')
   var th = this;
   th.username = UserService.username;
   th.email = UserService.email;
+  th.templates = UserService.templates;
 
   th.logout = function(){
     UserService.auth = false;
     $state.go('login');
   };
 
-  th.create = function(){
+  th.newEmail = function(){
     $state.go('send');
   };
 
-  th.create = function(){
+  th.newTemplate = function(){
     $state.go('create');
   };
 
-  var imagePath = 'http://www.stickees.com/files/avatars/face-avatars/1571-male-face-b2-sticker.png';
-  th.messages = [
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-    ];
+  th.useTemplate = function(text){
+    UserService.message = text;
+    $state.go('send');
+  };
 
+  th.imagePath = 'http://www.stickees.com/files/avatars/face-avatars/1571-male-face-b2-sticker.png';
 }]);
